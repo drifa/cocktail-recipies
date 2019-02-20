@@ -1,0 +1,52 @@
+
+.App {
+  text-align: center;
+}
+
+.mdc-tab-ink-color {
+  color: black;
+}
+
+.parallax:before {
+  content: "";
+  position: fixed;
+  top: -5%;
+  left: -5%;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+  
+  display: block;
+  background-image: url('images/moscowMule.jpg');
+  background-size:cover;
+  width: 110%;
+  height: 110%;
+  
+  -webkit-filter: blur(5px);
+  -moz-filter: blur(5px);
+  -o-filter: blur(5px);
+  -ms-filter: blur(5px);
+  filter: blur(5px);
+}
+
+.parallax {
+  overflow: auto;
+  position: relative;
+  height: 100%;
+}
+
+.parallax-container {
+	padding: 150px;
+}
+@media only screen and (max-device-width: 1024px) {
+  .parallax {
+      background-attachment: scroll;
+  }
+}
+
+/*.Recipe {
+  background-color: white;
+  padding-top: 5%;
+  margin-left: 15%;
+  margin-right: 15%;
+}*/
