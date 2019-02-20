@@ -1,0 +1,29 @@
+
+// ============
+//   GRIDLIST
+// ============
+
+#cocktail-info-grid-container {
+    direction: row;
+}
+
+#ingredients-equipment-grid {
+    direction: column;
+}
+
+#instruction-grid {
+    direction: column;
+}
+
+// ============
+//    CARDS
+// ============
+
+.ingredients-cocktail {
+    display: block;
+
+}
+
+.ingredient-info {
+    display: inline-block;
+}
