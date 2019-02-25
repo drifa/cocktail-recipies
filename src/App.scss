@@ -17,7 +17,7 @@
   z-index: -1;
   
   display: block;
-  background-image: url('images/moscowMule.jpg');
+  background-image: url('./images/moscowMule.jpg');
   background-size:cover;
   width: 110%;
   height: 110%;
@@ -36,17 +36,10 @@
 }
 
 .parallax-container {
-	padding: 150px;
+    padding: 150px;
 }
 @media only screen and (max-device-width: 1024px) {
   .parallax {
       background-attachment: scroll;
   }
 }
-
-/*.Recipe {
-  background-color: white;
-  padding-top: 5%;
-  margin-left: 15%;
-  margin-right: 15%;
-}*/

@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
+import Header from './components/Header';
 import Recipe from './components/Recipe';
-import AppBar from '@material-ui/core/AppBar';
-import Button from '@material-ui/core/Button';
-
-import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
-import theme from './Theme';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import './App.scss';
+import FrontPage from './components/FrontPage';
 
 class App extends Component {
   state = {
@@ -86,26 +84,19 @@ class App extends Component {
   render() {
     console.log(this.state.recipe);
     return (
-      <div className="App">
-        <MuiThemeProvider theme={theme}>
-          <AppBar position='static'>
-            <div>
-              <Button>
-                <div>Button 1</div>
-              </Button>
-              <Button>
-                <div>Button 2</div>
-              </Button>
+      <Router>
+        <div className="App">
+          <Header />
+          <div className='parallax'>
+            <div className='parallax-container'>
+              <Switch>
+                <Route exact path="/" component={FrontPage} />
+                <Route  path="/recipe" render={()=> <Recipe recipe={this.state.recipe} />} />
+              </Switch>
             </div>
-          </AppBar>
-        </MuiThemeProvider>
-
-        <div className='parallax'>
-          <div className='parallax-container'>
-            <Recipe recipe = {this.state.recipe} />
           </div>
         </div>
-      </div>
+      </Router>
     );
   }
 }
