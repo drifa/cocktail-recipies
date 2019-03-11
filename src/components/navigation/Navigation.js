@@ -3,9 +3,9 @@ import { NavLink } from 'react-router-dom';
 import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
 import theme from '../Theme';
 
-import '../styles/Header.scss';
+import './Navigation.scss';
 
-export class Header extends Component {
+export class Navigation extends Component {
   render() {
     return (
       <div>
@@ -23,5 +23,3 @@ export class Header extends Component {
     )
   }
 }
-
-export default Header;
