@@ -40,9 +40,7 @@ export class Recipe extends Component {
 
   fetchData = async () => {
     const { id } = this.props.match.params;
-    //console.log("MADE IT 1", id)
     const response = await fetch(`${url}/${id}`);
-    console.log(response);
     const data = await response.json();
     return data;
   }
@@ -50,7 +48,6 @@ export class Recipe extends Component {
   render() {
 
     const { cocktail, loading } = this.state;
-    console.log(this.state);
 
     if (loading ) {
       return (<div>Hleð inn gögnum...</div>);

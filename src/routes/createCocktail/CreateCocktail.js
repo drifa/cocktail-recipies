@@ -4,7 +4,6 @@ import axios from 'axios';
 import { Grid, TextField, MenuItem, Select, Button, Card, CardContent, CardActions, CardHeader, FormControl, FormControlLabel, FormGroup, InputLabel, Input, Checkbox, Typography } from '@material-ui/core';
 
 import './createCocktail.scss';
-import { debug } from 'util';
 
 const url = 'http://localhost:5000/cocktails';
 const urlIngredients = 'http://localhost:5000/ingredients';
@@ -32,8 +31,6 @@ export class CreateCocktail extends Component {
   }
 
   componentDidMount() {
-    console.log('Context: ',this.props.context);
-
     axios.get(urlIngredients).then(response => {
       const ingredientOptions = response.data.items.map(ingredient => ({
         ...ingredient,
@@ -72,8 +69,6 @@ export class CreateCocktail extends Component {
   }
 
   handleIngredientChecked = (e) => {
-    console.log('CHECKED: ',e.target.checked);
-    console.log('Value: ',e.target.value);
 
     const checked = e.target.checked;
 
@@ -105,7 +100,6 @@ export class CreateCocktail extends Component {
         ingredients,
       };
     });
-    console.log('Ingredients checked', ingredients);
   }
 
   handleChange(e) {

@@ -16,7 +16,6 @@ export class FrontPage extends Component {
   }
   
   async componentDidMount() {
-    console.log('FRONT PAGE:', this.props.context);
     try {
       const data = await this.fetchData();
       this.setState({ data, loading: false });

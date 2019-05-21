@@ -8,7 +8,6 @@ export default function withContext(Component) {
             return (
                 <AppContext.Consumer>
                     {(context) => {
-                        console.log('Context:', context);
                         return (<Component {...this.props} context={context} />);
                     }}
                 </AppContext.Consumer>);
