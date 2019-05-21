@@ -17,7 +17,7 @@
   z-index: -1;
   
   display: block;
-  background-image: url('./components/images/moscowMule.jpg');
+  background-image: url('./components/images/teaDrink.jpg');
   background-size:cover;
   width: 110%;
   height: 110%;
@@ -35,9 +35,6 @@
   height: 100%;
 }
 
-.parallax-container {
-    padding: 150px;
-}
 @media only screen and (max-device-width: 1024px) {
   .parallax {
       background-attachment: scroll;

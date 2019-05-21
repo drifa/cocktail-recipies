@@ -21,7 +21,7 @@ class CardIngredients extends Component {
 						</Typography>
 
 						<Typography className='ingredients-info'>
-							{ingredientInfo.ingredient}
+							{ingredientInfo.title}
 						</Typography>
 					</CardActions>
 						
@@ -37,29 +37,21 @@ class CardInstructions extends Component {
 		return (
 			<Card className='instructions-container'>
 				<CardHeader title='Instructions' />
-				{this.props.instruction.map((instructionInfo) => 
-				<CardContent className='instruction-cocktail' key={instructionInfo.id}>
+				<CardContent className='instruction-cocktail'>
 
 					<CardActions className='instruction-number'>
 						<Typography>
-							{instructionInfo.number}
-						</Typography>
-					<CardActions>
-					
-					</CardActions>
-						<Typography>
-							{instructionInfo.text}
+							{this.props.instructions}
 						</Typography>
 					</CardActions>
 
 				</CardContent>
-				)}
 			</Card>
 		);
   }
 }
 
-class CardEquipment extends Component {
+/*class CardEquipment extends Component {
   render() {
     return (
       <Card className='equipment-container'>
@@ -84,15 +76,13 @@ class CardEquipment extends Component {
       </Card>
     );
   }
-}
-
+}*/
 export class RecipeDescription extends Component {
 	state = {
 		ingredients: this.props.cocktailInfo.ingredients,
-		instruction: this.props.cocktailInfo.instruction,
-		equipments: this.props.cocktailInfo.equipments,
+		instructions: this.props.cocktailInfo.instructions,
+		//equipments: this.props.cocktailInfo.equipments,
 	}
-
   render() {
     return (
       <Grid container spacing={24} id='cocktail-info-grid-container'>
@@ -101,14 +91,12 @@ export class RecipeDescription extends Component {
           <Grid item id='ingredients-grid' xs={12}>
             <CardIngredients ingredients={this.state.ingredients}/>
           </Grid>
-          <Grid item xs={12}>
-            <CardEquipment equipments={this.state.equipments}/>
-          </Grid>
+          
         </Grid>
 
         <Grid container item spacing={24} xs id='instruction-grid'>
           <Grid item xs={12}>
-            <CardInstructions instruction={this.state.instruction}/>
+            <CardInstructions instructions={this.state.instructions}/>
           </Grid>
         </Grid>
 
@@ -121,3 +109,5 @@ export class RecipeDescription extends Component {
 RecipeDescription.propTypes = {
     cocktailInfo: propTypes.object.isRequired
 }
+
+export default RecipeDescription;
