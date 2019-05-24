@@ -91,7 +91,7 @@ export class UsersProfile extends Component {
               alignItems="center"
             >
               <Grid item>
-                <Avatar id='profile-image' alt="Remy Sharp" src={require("../../components/images/avatar.jpg")} />
+                <Avatar id='profile-image' alt="Remy Sharp" src="/images/avatar.jpg" />
               </Grid>
               <Grid item>
                 <Typography variant='h4'>{data.isLoading && 'Loading...'}</Typography>
