@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
-import { Typography, Card, CardActions, CardContent, CardMedia, CardActionArea, Grid } from '@material-ui/core';
+import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
+import { Typography, Card, CardContent, CardMedia, CardActionArea, Grid } from '@material-ui/core';
 import theme from '../../Theme';
 
 import './FrontPage.scss';
 
-const url = 'http://localhost:5000/cocktails';
+const url = 'https://cocktails-backend.herokuapp.com/cocktails';
 
 export class FrontPage extends Component {
   state = {
@@ -18,7 +17,7 @@ export class FrontPage extends Component {
   async componentDidMount() {
     try {
       const data = await this.fetchData();
-      this.setState({ data, loading: false });
+      this.setState({ data, loading: false, error: false });
     } catch (error) {
       console.error('Error fetching data', error);
       this.setState({ error: true, loading: false });
@@ -28,8 +27,6 @@ export class FrontPage extends Component {
   fetchData = async () => {
     const response = await fetch(url);
     const data = await response.json();
-    console.log('Response: ', response);
-    console.log('data: ', data);
     return data;
   }
 

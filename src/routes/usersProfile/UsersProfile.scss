@@ -1,17 +1,53 @@
-#main-div {
-    height: 50%;
+.mmain-div-user-profile {
+    height: 100%;
     margin-top: 5%;
 }
 
-#users-info {
+.user-profile-grid-item-1 {
     background-color: white;
-    padding-top: 10%;
-    padding-bottom: 100%;
+    padding-top: 9%;
+    padding-bottom: 20%;
+    margin: 5%;
+}
+
+#profile-image {
+    margin: 10;
+    min-width: 120px;
+    min-height: 120px;
+}
+
+#grid-container {
+    height: 100%;
+}
+
+#cocktail-card-grid {
+    margin-top: 19%;
+    padding-top: 5%
 }
 
 #users-cocktails {
-    padding-top: 5%;
-    margin-top: 30%;
-    background-color: white;
+    padding-left: 7%;
+    padding-right: 7%;
 }
 
+.card-cocktail-grid-item {
+    margin: 10%;
+}
+
+.card-cocktail {
+    max-height: 200px;
+    max-width: 220px;
+}
+
+#addIcon-button {
+    margin: 10%;
+    margin-top: 20%;
+}
+
+#users-cocktail-recipes-title {
+    display: flex;
+    margin-bottom: 5%;
+    padding-left: 7%;
+    align-self: flex-start;
+    justify-self: flex-start
+}

@@ -24,26 +24,24 @@ class App extends Component {
         <ContextProvider>
           <header className='app_header'>
           </header>
+          <div className='parallax'>
+          </div>
           <AppContext.Consumer>
             {(context) => (
-              <div>
-                <Navigation context={context}/>
-                <div className='parallax'>
-                  <div className='parallax-container'>
-                    <AppContext.Consumer>
-                      {(context) => (
-                      <Switch>
-                        <ProtectedRoute path="/createCocktail" component={CreateCocktail}/>
-                        <ProtectedRoute path="/user/:id" component={UsersProfile}/>
-                        <Route path="/login" render={(props) => (<Login {...props} context={context} />)}/>
-                        <Route path="/signup" render={(props) => (<Signup {...props} context={context} />)} />
-                        <Route path="/:id" component={Recipe} />
-                        <ProtectedRoute path="/" component={FrontPage}/>
-                      </Switch>
-                      )}
-                    </AppContext.Consumer>
-                  </div>
-                </div>
+              <div id='consumer-div'>
+                <Navigation context={context} id='navigation-app'/>
+                <AppContext.Consumer>
+                  {(context) => (
+                  <Switch>
+                    <ProtectedRoute path="/createCocktail" component={CreateCocktail}/>
+                    <ProtectedRoute path="/user/:id" component={UsersProfile}/>
+                    <Route path="/login" render={(props) => (<Login {...props} context={context} />)}/>
+                    <Route path="/signup" render={(props) => (<Signup {...props} context={context} />)} />
+                    <ProtectedRoute path="/:id" component={Recipe} />
+                    <ProtectedRoute path="/" component={FrontPage}/>
+                  </Switch>
+                  )}
+                </AppContext.Consumer>
               </div>
             )}
           </AppContext.Consumer>

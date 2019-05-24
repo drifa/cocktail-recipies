@@ -10,8 +10,8 @@ authAxios.interceptors.request.use((config)=>{
   return config;
 })
 
-const url = 'http://localhost:5000/signup';
-const urlLogin = 'http://localhost:5000/login';
+const url = 'https://cocktails-backend.herokuapp.com/signup';
+const urlLogin = 'https://cocktails-backend.herokuapp.com/login';
 
 export default class ContextProvider extends React.Component {
   constructor(props) {

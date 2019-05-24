@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
-import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
-import { Grid, Card, CardActionArea, CardMedia, Typography, CardContent } from '@material-ui/core';
+import AddIcon from '@material-ui/icons/Add';
+import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
+import { Grid, Card, CardActionArea, CardMedia, Typography, CardContent, Fab, Avatar } from '@material-ui/core';
 import theme from '../../Theme';
 
 import './UsersProfile.scss';
 
-const url = 'http://localhost:5000/users';
+const url = 'https://cocktails-backend.herokuapp.com/users';
 
 export class UsersProfile extends Component {
 
@@ -43,56 +43,98 @@ export class UsersProfile extends Component {
   render() {
     const data = this.state;
 
+    const titleLoggedInUsersCocktails = ( <Typography variant='h5'>Your Cocktail Recipes:</Typography>);
+    
+    const titleUsersCocktails = (<Typography variant='h5'>{data.user.username}'s Cocktail Recipes:</Typography>);
+
+    const createCocktailButton = (
+      <Grid item xs={4} className='card-cocktail-grid-item'>
+          <Card className='card-cocktail'>
+            <Fab id='addIcon-button' color="secondary" aria-label="Add" href='/createCocktail'>
+              <AddIcon />
+            </Fab>
+              <CardContent>
+              <Typography gutterBottom variant="h5" component="h2">
+                  Create Cocktail
+                </Typography>
+              </CardContent>
+          </Card>
+      </Grid>
+    );
+    
+    const LoggedInCreateButton = [];
+    const outcomeTitle = [];
+    
+    if (this.props.computedMatch.params.id === 'me') {
+      outcomeTitle.push(titleLoggedInUsersCocktails);
+      LoggedInCreateButton.push(createCocktailButton);
+    } else {
+      outcomeTitle.push(titleUsersCocktails);
+    }
+
     return (
-      <div id='main-div'>
+      <div className='main-div-user-profile'>
         <MuiThemeProvider theme={theme}>
-          <Grid container >
-            <Grid item xs={4}>
-              <section id='users-info' color='primary'>
-                <p>{data.isLoading && 'Loading...'}</p>
-                <h1>{(!data.isLoading && !data.error) && data.user.username}</h1>
-              </section>
+          <Grid 
+            id='grid-container'
+            container
+            direction='row'
+            justify='center'
+            alignItems="flex-stretch"
+          >
+            <Grid item xs={4} className='user-profile-grid-item-1' >
+            <Grid 
+              container
+              spacing={24}
+              direction='column'
+              justify='center'
+              alignItems="center"
+            >
+              <Grid item>
+                <Avatar id='profile-image' alt="Remy Sharp" src={require("../../components/images/avatar.jpg")} />
+              </Grid>
+              <Grid item>
+                <Typography variant='h4'>{data.isLoading && 'Loading...'}</Typography>
+                <Typography variant='h3'>{(!data.isLoading && !data.error) && data.user.username}</Typography>
+              </Grid>
+              <Grid item>
+                <Typography variant='h6'>{data.user.email}</Typography>
+              </Grid>
             </Grid>
-            <Grid item xs={8}>
+              
+            </Grid>
+            <Grid item xs={8} id='cocktail-card-grid' className='user-profile-grid-item-1'>
+              <div id='users-cocktail-recipes-title'>
+                <Typography variant='h5'>{outcomeTitle}</Typography>
+              </div>
+
               <Grid 
                 id='users-cocktails'
                 container
-                direction='column'
-                justify="center"
-                alignItems="center">
-                <Grid item xs={12}>
-                  <section id='users-cocktails-section' color='primary'>
-                    <Grid container spacing={24}>
-                      {(!this.state.isLoading && !this.state.error) && data.user.cocktails.map(cocktail => (
-                        <Grid item xs={4}
-                          direction="row"
-                          justify="center"
-                          alignItems="center"
-                        >
-                          <Card className='card-cocktail'>
-                            <CardActionArea href={`/${cocktail.id}/`} cocktail={cocktail} >
-                              <CardMedia
-                                className='card-image-cocktail'
-                                image={cocktail.imageurl}
-                              />
-                              <CardContent>
-                              <Typography gutterBottom variant="h5" component="h2">
-                                  {cocktail.title}
-                                </Typography>
-                              </CardContent>
-                            </CardActionArea>
-                          </Card>
-                          </Grid>
-                      ))}
-                    </Grid>
-                  </section>
+                spacing={40}
+                direction='row'
+                justify="flex-start"
+                alignItems="flex-start"
+              >
+                {LoggedInCreateButton}
+
+                {(!this.state.isLoading && !this.state.error) && data.user.cocktails.map(cocktail => (
+                <Grid item xs={4} className='card-cocktail-grid-item'>
+                    <Card className='card-cocktail'>
+                      <CardActionArea href={`/${cocktail.id}/`} cocktail={cocktail} >
+                        <CardMedia
+                          className='card-image-cocktail'
+                          image={cocktail.imageurl}
+                        />
+                        <CardContent>
+                        <Typography gutterBottom variant="h5" component="h2">
+                            {cocktail.title}
+                          </Typography>
+                        </CardContent>
+                      </CardActionArea>
+                    </Card>
                 </Grid>
-                <Grid item xs={12}>
-                  <section id='users-favorite-cocktails-section' color='primary'>
-                    <p>TODO: about the user (photo, email, username ect), list of created cocktails, list of favorite cocktails </p>
-                    <Link to='/createCocktail'>Create new Cocktail</Link>
-                  </section>
-                </Grid>
+                ))}
               </Grid>
             </Grid>
           </Grid>
