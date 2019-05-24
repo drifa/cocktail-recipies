@@ -5,13 +5,13 @@ import { AppContext } from './contextAPI/ContextProvider';
 
 import './App.scss';
 
-import { Navigation } from './components/navigation/Navigation';
+import { Navigation } from './routes/navigation/Navigation';
 import { CreateCocktail } from './routes/createCocktail/CreateCocktail';
 import { UsersProfile } from './routes/usersProfile/UsersProfile';
 import { FrontPage } from './routes/frontPage/FrontPage';
-import { Recipe } from './components/recipe/Recipe';
-import { Login } from './components/signup/Login';
-import { Signup } from './components/signup/Signup';
+import { Recipe } from './routes/recipe/Recipe';
+import { Login } from './routes/signup/Login';
+import { Signup } from './routes/signup/Signup';
 import ProtectedRoute from "./contextAPI/ProtectedRoute";
 
 class App extends Component {
